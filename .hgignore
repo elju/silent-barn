@@ -7,4 +7,5 @@ syntax: glob
 .gitignore
 *.orig
 config/local.php
+index.html
 js/sys/build/*.js
