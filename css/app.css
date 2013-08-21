@@ -96,7 +96,7 @@ nav {
     position: fixed; width: 100%; z-index: 1; height: 32px; top: 0; }
     
     nav a {
-        display: inline-block; color: #999; margin: 0 10px; line-height: 1.4em;
+        display: inline-block; color: #999; margin: 0 25px; line-height: 1.4em;
         background: #292929; padding: 5px 20px 6px; text-decoration: none; }
     nav a:hover {
         background: #393939; color: #aaa; }
@@ -162,7 +162,20 @@ div.caption {
 /* Prizes
  */
 #prizes {
-    margin-bottom: 60px; }
+    margin-bottom: 60px; width: 980px; margin: 0 auto 60px ; }
+
+    .prize {
+        position: relative; width: 239px; margin: 0 8px 8px 0; float: left; }
+    .prize.no-pad {
+        margin: 0 0 8px 0; }
+    .prize .img-caption {
+        position: absolute; bottom: 0; background: rgba( 0, 0, 0, 0.8 );
+        color: #fff; padding: 6px 10px; }
+    .prize .price {
+        position: absolute; top: 0; right: 0; background: rgba( 0, 0, 0, 0.8 );
+        padding: 4px 8px; font-size: 0.9em; color: #fff; }
+    .prize .price i {
+        margin-left: 3px; color: #ccc; font-size: 0.9em; }
 
 /* Final CTA
  */

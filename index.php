@@ -1,4 +1,48 @@
-<!DOCTYPE html>
+<?php
+
+// load the config files. first check if the config directory is outside
+// the www-data root. if not, load the local one.
+//
+if ( file_exists( '../config/default.php' ) ):
+    require_once '../config/default.php';
+else:
+    require_once 'config/default.php';
+endif;
+
+if ( file_exists( '../config/local.php' ) ):
+    require_once '../config/local.php';
+else:
+    require_once 'config/local.php';
+endif;
+
+
+$asset_version = intval( trim( $asset_version ) );
+$config->asset_version = $asset_version;
+
+// check for command line arguments
+//
+$compile = FALSE;
+
+if ( isset( $argv ) && is_array( $argv ) ):
+    $options = getopt( "c" );
+
+    if ( array_key_exists( "c", $options ) ):
+        $compile = TRUE;
+    endif;
+endif;
+
+// if there's an asset version, load that into the asset url
+//
+$asset_path = $config->asset_path;
+$asset_path .= ( $config->use_asset_version )
+    ? $config->asset_version . "/"
+    : "";
+
+if ( $compile ):
+    ob_start();
+endif;
+
+?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -10,11 +54,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/trunk.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="<?php echo $asset_path; ?>css/normalize.css">
+        <link rel="stylesheet" href="<?php echo $asset_path; ?>css/main.css">
+        <link rel="stylesheet" href="<?php echo $asset_path; ?>css/trunk.css">
+        <link rel="stylesheet" href="<?php echo $asset_path; ?>css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo $asset_path; ?>css/app.css">
 
         <link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
@@ -89,7 +133,7 @@
                 <div class="col-one">
                     <div class="question bold">What are Barnacles?</div>
                     <div class="answer">
-                        <img class="float-right caption-right" src="images/coin_placeholder.jpeg" />
+                        <img class="float-right caption-right" src="<?php echo $asset_path; ?>images/coin_placeholder.jpeg" />
                         <p>
                             We'd like to thank you for your generous donation with a "Barnacle" prize 
                             produced by our residents and stewdios - everything from patches, mini-paintings, 
@@ -149,28 +193,28 @@
             <div id="prizes" class="clearfix">
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/01_stewdio_triamonds.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/01_stewdio_triamonds.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Triangle Instinct, <em>Triamonds</em>
                     </div>
                 </div>
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/02_stewdio_seedlings.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/02_stewdio_seedlings.jpg" width="239" height="239" />
                     <div class="img-caption">
                         CSAA, <em>Seedlings</em>
                     </div>
                 </div>
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/03_resident_noise_friends.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/03_resident_noise_friends.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Kunal Gupta, <em>Noise Friends</em>
                     </div>
                 </div>
                 <div class="prize no-pad">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/04_stewdio_mutant_animals.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/04_stewdio_mutant_animals.jpg" width="239" height="239" />
                     <div class="img-caption">
                         (Scientific) Abstract Art, <em>Mutant Animals</em>
                     </div>
@@ -179,28 +223,28 @@
 
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/05_stewdio_espresso.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/05_stewdio_espresso.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Trough, <em>Espresso</em>
                     </div>
                 </div>
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/06_resident_tea_blends.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/06_resident_tea_blends.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Lani Combier-Kapel, <em>Tea Blends</em>
                     </div>
                 </div>
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/07_stewdio_aftermath.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/07_stewdio_aftermath.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Aftermath, <em>Screen printed poster</em>
                     </div>
                 </div>
                 <div class="prize no-pad">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/08_stewdio_deep_cuts.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/08_stewdio_deep_cuts.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Deep Cuts, <em>Mixtape: The Fade vol.</em>
                     </div>
@@ -209,21 +253,21 @@
 
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/09_intern_dave_albert.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/09_intern_dave_albert.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Dave Albert, <em>Comic Book</em>
                     </div>
                 </div>
                 <div class="prize">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/10_paesthetics_beer.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/10_paesthetics_beer.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Paesthetics LLC, <em>Beer</em>
                     </div>
                 </div>
                 <div class="prize no-pad">
                     <div class="price round-bl-4">1 <i class="icon-circle"></i></div>
-                    <img src="images/prizes/239/11_residents_folk_to_folk.jpg" width="239" height="239" />
+                    <img src="<?php echo $asset_path; ?>images/prizes/239/11_residents_folk_to_folk.jpg" width="239" height="239" />
                     <div class="img-caption">
                         Mashurova &amp; McFarland, <em>Folk to Folk Mini-zine</em>
                     </div>
@@ -266,9 +310,9 @@
         <!-- Initialize Trunk JS (see trunkjs.com/docs) -->
         <script>
             App.extend({
-                rootPath: 'http://grademate.com/silentbarn/', // change to your app path
-                jsPath: 'http://grademate.com/silentbarn/js/', // change to your app path
-                env: 'development',
+                rootPath: '<?php echo $config->path; ?>',
+                jsPath: '<?php echo $asset_path; ?>js/',
+                env: '<?php echo $config->js_environment; ?>',
                 pages: [ 
                     'home.js' ],
                 libraries: []

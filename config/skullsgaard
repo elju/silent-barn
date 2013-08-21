@@ -1,0 +1,6 @@
+<?php
+
+$config->path = 'http://grademate.com/silentbarn/';
+$config->asset_path = 'http://grademate.com/silentbarn/';
+$config->js_environment = 'development';
+$config->environment = 'skullsgaard';
