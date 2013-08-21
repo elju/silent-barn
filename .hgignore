@@ -8,4 +8,3 @@ syntax: glob
 *.orig
 config/local.php
 index.html
-js/sys/build/*.js
