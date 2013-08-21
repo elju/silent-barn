@@ -16,9 +16,6 @@ else:
 endif;
 
 
-$asset_version = intval( trim( $asset_version ) );
-$config->asset_version = $asset_version;
-
 // check for command line arguments
 //
 $compile = FALSE;
@@ -34,9 +31,6 @@ endif;
 // if there's an asset version, load that into the asset url
 //
 $asset_path = $config->asset_path;
-$asset_path .= ( $config->use_asset_version )
-    ? $config->asset_version . "/"
-    : "";
 
 if ( $compile ):
     ob_start();
@@ -324,3 +318,21 @@ endif;
         </script>
     </body>
 </html>
+<?php
+    
+if ( $compile ):
+    // get the compiled output
+    //
+    $output = ob_get_contents();
+    ob_end_clean();
+    
+    // write it to index.html
+    //
+    if ( file_put_contents( 'index.html', $output ) !== FALSE ):
+        echo "Contents written to index.html.\n";
+    else:
+        echo "Error compiling index file.\n";
+    endif;
+endif; 
+
+?>
