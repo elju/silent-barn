@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Mike Gioia -- Developer -- @mikegioia
 
 # THANKS
 
-    <name>
+    Joe Ahearn
 
 # TECHNOLOGY COLOPHON
 
