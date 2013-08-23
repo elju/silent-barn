@@ -72,7 +72,8 @@ endif;
 
             <div id="banner" class="clearfix">
                 <div id="video">
-                    <div id="embed" class="round-3">
+                    <div id="embed" class="round-3 relative">
+                        <div class="callout">1</div>
                         <i class="icon-play-circle"></i>
                     </div>
                 </div>
@@ -101,7 +102,8 @@ endif;
             <h1>
                 <div>About Donating</div>
             </h1>
-            <div class="wrap two-cols clearfix">
+            <div class="wrap two-cols clearfix relative">
+                <div class="callout">2</div>
                 <div class="col-one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac congue diam, 
                     eget gravida neque. Fusce sodales ultricies erat eu consequat. Curabitur id 
@@ -126,7 +128,9 @@ endif;
             <div class="wrap two-cols clearfix">
                 <div class="col-one">
                     <div class="question bold">What are Barnacles?</div>
-                    <div class="answer">
+                    <div class="answer relative">
+                        <div class="callout">3</div>
+                        <div class="callout right">4</div>
                         <img class="float-right caption-right" src="<?php echo $asset_path; ?>images/coin_placeholder.jpeg" />
                         <p>
                             We'd like to thank you for your generous donation with a "Barnacle" prize 
@@ -141,7 +145,8 @@ endif;
                         </p>
                     </div>
                 </div>
-                <div class="col-two">
+                <div class="col-two relative">
+                    <div class="callout right">5</div>
                     <table>
                         <thead>
                             <tr>
@@ -173,7 +178,7 @@ endif;
                         </tbody>
                     </table>
                     <div class="caption">
-                        Barnacles could get cheaper if you buy in bulk
+                        Idea: Barnacles could get cheaper if you buy in bulk
                     </div>
                 </div>
             </divh>
