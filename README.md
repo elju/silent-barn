@@ -1,7 +1,7 @@
 Silent Barn
 ===========
 
-*Installation*
+**Installation**
 
 Create a file in /config for your environment, extending any variables in default.php. Copy 
 this file to /config/local.php. You should only make changes to your environment file and 
