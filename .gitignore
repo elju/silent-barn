@@ -1,0 +1,9 @@
+js/sys/build/*.js
+*~
+*.orig
+.DS_Store
+.DS_Store?
+.project
+.settings
+index.html
+config/local.php
